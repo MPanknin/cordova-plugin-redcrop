@@ -1,0 +1,20 @@
+{
+  "name": "redCrop",
+  "version": "0.0.1",
+  "description": "Image cropping with support for fixed aspect ratio",
+  "cordova": {
+    "id": "cordova-plugin-redcrop",
+    "platforms": [
+		"ios"
+	]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MPanknin/cordova-plugin-redcrop"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Martin Panknin - redPlant GmbH",
+  "license": "ISC"
+}

@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-redcrop",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Crop an image in a Cordova app with support for aspect ratio",
   "cordova": {
     "id": "cordova-plugin-redcrop",
@@ -10,14 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://MPanknin:!78Gh90!@github.com/MPanknin/cordova-plugin-redcrop.git"
+    "url": "https://github.com/MPanknin/cordova-plugin-redcrop.git"
   },
   "keywords": [
-    "cordova",
-    "ecosystem:cordova",
-    "cordova-ios",
-    "image manipulation",
-    "crop"
+    "cordova"
   ],
   "license": "ISC"
 }

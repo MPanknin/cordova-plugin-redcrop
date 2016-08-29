@@ -1,20 +1,23 @@
 {
-  "name": "redCrop",
-  "version": "0.0.2",
-  "description": "Image cropping with support for fixed aspect ratio",
+  "name": "cordova-plugin-redcrop",
+  "version": "0.0.3",
+  "description": "Crop an image in a Cordova app with support for aspect ratio",
   "cordova": {
     "id": "cordova-plugin-redcrop",
     "platforms": [
-		"ios"
-	]
+      "ios"
+    ]
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MPanknin/cordova-plugin-redcrop"
+    "url": "https://MPanknin:!78Gh90!@github.com/MPanknin/cordova-plugin-redcrop.git"
   },
   "keywords": [
-    "ecosystem:cordova"
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "image manipulation",
+    "crop"
   ],
-  "author": "Martin Panknin - redPlant GmbH",
   "license": "ISC"
 }

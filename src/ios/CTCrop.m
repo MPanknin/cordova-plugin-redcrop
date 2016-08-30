@@ -40,14 +40,18 @@
     CGFloat width = image.size.width;
     CGFloat height = image.size.height;
     CGFloat length = MIN(width, height);
-    cropController.toolbarHidden = NO;
-    cropController.rotationEnabled = YES;
+    cropController.toolbarHidden = YES;
+    cropController.rotationEnabled = NO;
+
+    cropController.keepingCropAspectRatio = YES;
+    CGFloat ratio = 9.0f / 16.0f;
+    cropController.cropAspectRatio = ratio;
     
     // TODO parameterize this
     cropController.imageCropRect = CGRectMake((width - length) / 2,
                                           (height - length) / 2,
                                           length,
-                                          length);
+                                          length * ratio);
     
     self.callbackId = command.callbackId;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];

@@ -322,10 +322,10 @@
 
         if (CGRectGetHeight(rect) < 1800) {
             constrainedRect.size.height = 1800;
-        }        
-    }
+        }     
 
-    rect = constrainedRect;
+        rect = constrainedRect;   
+    }
     
     return rect;
 }

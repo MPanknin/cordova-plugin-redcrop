@@ -315,7 +315,17 @@
         }
 
         rect = constrainedRect;
+
+        if (CGRectGetWidth(rect) < 3200) {
+            constrainedRect.size.width = 3200;
+        }
+
+        if (CGRectGetHeight(rect) < 1800) {
+            constrainedRect.size.height = 1800;
+        }        
     }
+
+    rect = constrainedRect;
     
     return rect;
 }

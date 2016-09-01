@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-redcrop",
-  "version": "0.0.71",
+  "version": "0.0.72",
   "description": "Crop an image in a Cordova app with support for aspect ratio",
   "cordova": {
     "id": "cordova-plugin-redcrop",

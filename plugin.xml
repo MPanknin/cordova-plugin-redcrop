@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
   xmlns:android="http://schemas.android.com/apk/res/android"
   id="cordova-plugin-redcrop"
-  version="0.0.71">
+  version="0.0.72">
 
   <name>CropPlugin with AR support</name>
 

@@ -431,6 +431,8 @@ static const CGFloat MarginLeft = 20.0f;
 {
     CGRect cropRect = [self cappedCropRectInImageRectWithCropRectView:cropRectView];
     
+    
+
     [self layoutCropRectViewWithCropRect:cropRect];
     
     [self automaticZoomIfEdgeTouched:cropRect];

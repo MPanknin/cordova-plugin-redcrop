@@ -317,15 +317,6 @@
             constrainedRect.size.height = rect.size.width * (minHeight / rect.size.height);
         }
 
-        if (CGRectGetWidth(rect) < 3200.0f) {
-            constrainedRect.size.width = rect.size.height * (3200.0f / rect.size.width);
-        }
-
-        if (CGRectGetHeight(rect) < 1800.0f) {
-            constrainedRect.size.height = rect.size.width * (1800.0f / rect.size.height);
-        }
-        
-
         rect = constrainedRect;
     }
     
@@ -335,6 +326,12 @@
 - (CGRect)constrainedRectWithRectBasisOfWidth:(CGRect)rect aspectRatio:(CGFloat)aspectRatio
 {
     CGFloat width = CGRectGetWidth(rect);
+
+    if(width < 3200.0f)
+    {
+        width = 3200.0f;
+    }
+
     CGFloat height = CGRectGetHeight(rect);
     if (width < height) {
         height = width / self.fixedAspectRatio;
@@ -350,6 +347,12 @@
 {
     CGFloat width = CGRectGetWidth(rect);
     CGFloat height = CGRectGetHeight(rect);
+
+    if(height < 1800.0f)
+    {
+        height = 1800.0f;
+    }
+
     if (width < height) {
         width = height * self.fixedAspectRatio;
     } else {

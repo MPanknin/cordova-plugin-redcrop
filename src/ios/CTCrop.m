@@ -72,7 +72,7 @@
 
 #pragma mark - PECropViewControllerDelegate
 
--(void) msg2Client:(NSString *)str {
+-(void) msg2Client:(NSString *)msg {
     [self.commandDelegate evalJs:msg];
 }
 

@@ -32,6 +32,8 @@
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         return;
     }
+
+    [self.commandDelegate evalJs:@"redLog('Plugin init');"];
     
     PECropViewController *cropController = [[PECropViewController alloc] init];
     cropController.delegate = self;
@@ -53,6 +55,8 @@
                                           length,
                                           length * ratio);
     
+    [self.commandDelegate evalJs:@"redLog('Crop rect setup');"];                                          
+
     self.callbackId = command.callbackId;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];
     

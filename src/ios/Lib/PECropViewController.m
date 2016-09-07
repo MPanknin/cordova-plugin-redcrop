@@ -83,7 +83,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.title = @"View Did Load";
 
     if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.delegate msg2Client:@"View did load..."];
+        [self.delegate msg2Client:@"redLog('Jalla');"];
     }
 
     self.navigationController.navigationBar.translucent = NO;

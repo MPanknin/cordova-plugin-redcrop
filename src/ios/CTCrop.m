@@ -55,7 +55,7 @@
                                           length,
                                           length * ratio);
     
-    [self.commandDelegate evalJs:@"redLog('Crop rect setup');"];                                          
+                                    
 
     self.callbackId = command.callbackId;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];
@@ -65,6 +65,8 @@
     }
     
     [self.viewController presentViewController:navigationController animated:YES completion:NULL];
+
+    [self.commandDelegate evalJs:@"redLog('Cropview controller setup correctly');"];
 }
 
 #pragma mark - PECropViewControllerDelegate

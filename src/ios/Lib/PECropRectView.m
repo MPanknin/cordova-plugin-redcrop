@@ -303,8 +303,8 @@
         rect.size.height = minHeight;
     }
 
-    minWidth = minWidth < 3200 ? 3200: minWidth;
-    minHeight = minHeight < 1800 ? 1800: minHeight;
+    // minWidth = minWidth < 3200 ? 3200: minWidth;
+    // minHeight = minHeight < 1800 ? 1800: minHeight;
 
     if (self.fixedAspectRatio) {
         CGRect constrainedRect = rect;
@@ -316,6 +316,15 @@
         if (CGRectGetHeight(rect) < minHeight) {
             constrainedRect.size.height = rect.size.width * (minHeight / rect.size.height);
         }
+
+        if (CGRectGetWidth(rect) < 3200.0f) {
+            constrainedRect.size.width = rect.size.height * (3200.0f / rect.size.width);
+        }
+
+        if (CGRectGetHeight(rect) < 1800.0f) {
+            constrainedRect.size.height = rect.size.width * (1800.0f / rect.size.height);
+        }
+        
 
         rect = constrainedRect;
     }

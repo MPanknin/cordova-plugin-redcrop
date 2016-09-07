@@ -73,7 +73,7 @@
 #pragma mark - PECropViewControllerDelegate
 
 -(void) msg2Client:(NSString *)str {
-    [self.commandDelegate evalJs:@msg];
+    [self.commandDelegate evalJs:msg];
 }
 
 - (void)cropViewController:(PECropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage {

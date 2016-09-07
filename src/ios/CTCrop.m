@@ -33,7 +33,8 @@
         return;
     }
 
-    [self.commandDelegate evalJs:@"redLog('Plugin init');"];
+    [self msg2Client:@"jallla..."];
+    [self msg2Client:@"Cropview Controller constructed"];
     
     PECropViewController *cropController = [[PECropViewController alloc] init];
     cropController.delegate = self;
@@ -66,10 +67,14 @@
     
     [self.viewController presentViewController:navigationController animated:YES completion:NULL];
 
-    [self.commandDelegate evalJs:@"redLog('Cropview controller setup correctly');"];
+    [self msg2Client:@"Cropview controller setup correctly..."];
 }
 
 #pragma mark - PECropViewControllerDelegate
+
+-(void) msg2Client:(NSString *)str {
+    [self.commandDelegate evalJs:@msg];
+}
 
 - (void)cropViewController:(PECropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage {
     [controller dismissViewControllerAnimated:YES completion:nil];

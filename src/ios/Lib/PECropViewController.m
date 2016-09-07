@@ -82,6 +82,10 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     
     self.title = @"View Did Load";
 
+    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.delegate msg2Client:@"View did load..."];
+    }
+
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.toolbar.translucent = NO;
 
@@ -115,6 +119,11 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     
     self.title = @"View Did Appear";
 
+    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.delegate msg2Client:@"View did appear..."];
+    }
+
+
     if (self.cropAspectRatio != 0) {
         self.cropAspectRatio = self.cropAspectRatio;
     }
@@ -137,8 +146,6 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 
 - (void)setImage:(UIImage *)image
 {
-    [self.delegate.commandDelegate evalJs:@"redLog('Set image');"];
-
     _image = image;
     self.cropView.image = image;
 }
@@ -157,8 +164,6 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 
 - (void)setCropRect:(CGRect)cropRect
 {
-    [self.delegate.commandDelegate evalJs:@"redLog('Set crop rect');"];
-
     _cropRect = cropRect;
     _imageCropRect = CGRectZero;
     
@@ -174,8 +179,6 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 
 - (void)setImageCropRect:(CGRect)imageCropRect
 {
-    [self.delegate.commandDelegate evalJs:@"redLog('Set image crop rect');"];
-
     _imageCropRect = imageCropRect;
     _cropRect = CGRectZero;
     
@@ -200,7 +203,6 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 
 - (CGRect)zoomedCropRect
 {
-    [self.delegate.commandDelegate evalJs:@"redLog('Zoomed cropped rect');"];
     return self.cropView.zoomedCropRect;
 }
 

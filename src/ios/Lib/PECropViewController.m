@@ -80,10 +80,10 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 {
     [super viewDidLoad];
     
-    self.title = @"View Did Load";
+    self.title = @"Crop Image";
 
     if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.delegate msg2Client:@"redLog('Jalla');"];
+        [self.delegate msg2Client:@"redLog('Cropping active');"];
     }
 
     self.navigationController.navigationBar.translucent = NO;
@@ -116,13 +116,6 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    self.title = @"View Did Appear";
-
-    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.delegate msg2Client:@"View did appear..."];
-    }
-
 
     if (self.cropAspectRatio != 0) {
         self.cropAspectRatio = self.cropAspectRatio;
@@ -148,6 +141,10 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 {
     _image = image;
     self.cropView.image = image;
+
+    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.delegate msg2Client:@"redLog('Image set');"];
+    }
 }
 
 - (void)setKeepingCropAspectRatio:(BOOL)keepingCropAspectRatio
@@ -175,6 +172,11 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
                              fminf(CGRectGetMaxY(cropViewCropRect) - CGRectGetMinY(cropViewCropRect), CGRectGetHeight(cropRect)));
     cropViewCropRect.size = size;
     self.cropView.cropRect = cropViewCropRect;
+
+    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msg = [NSString stringWithFormat:@"redLog('Crop Rect:  %f %f');", size.width , size.height];
+        [self.delegate msg2Client:msg];
+    }
 }
 
 - (void)setImageCropRect:(CGRect)imageCropRect
@@ -183,6 +185,11 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     _cropRect = CGRectZero;
     
     self.cropView.imageCropRect = imageCropRect;
+
+    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msg = [NSString stringWithFormat:@"redLog('Image crop rect);"];
+        [self.delegate msg2Client:msg];
+    }    
 }
 
 - (BOOL)isRotationEnabled

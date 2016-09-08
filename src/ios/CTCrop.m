@@ -33,10 +33,6 @@
         return;
     }
 
-    [self.commandDelegate evalJs:@"redLog('Cropview');"];
-
-    [self msg2Client:@"redLog('Cropview2');"];
-    
     PECropViewController *cropController = [[PECropViewController alloc] init];
     cropController.delegate = self;
     cropController.image = image;
@@ -67,6 +63,8 @@
     }
     
     [self.viewController presentViewController:navigationController animated:YES completion:NULL];
+
+    [self msg2Client:@"redLog('Cropview activev');"];
 }
 
 #pragma mark - PECropViewControllerDelegate

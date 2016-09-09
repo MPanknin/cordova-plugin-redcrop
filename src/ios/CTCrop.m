@@ -42,7 +42,7 @@
     // e.g.) Cropping center square
     CGFloat width = image.size.width;
     CGFloat height = image.size.height;
-    
+
     // CGFloat length = MIN(width, height);
     cropController.toolbarHidden = YES;
     cropController.rotationEnabled = NO;
@@ -71,10 +71,10 @@
     [self msg2Client:@"redLog('Cropview active');"];
 
     NSString *msgInput = [NSString stringWithFormat:@"redLog('Input size:  %f %f');", width , height];
-    [self.delegate msg2Client:msgInput];
+    [self msg2Client:msgInput];
 
     NSString *msgRect = [NSString stringWithFormat:@"redLog('Rect size:  %f %f');", width , width * ratio];
-    [self.delegate msg2Client:msgRect];    
+    [self msg2Client:msgRect];    
 }
 
 #pragma mark - MsgDelegate

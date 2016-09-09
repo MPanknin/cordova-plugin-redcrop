@@ -36,7 +36,7 @@
     PECropViewController *cropController = [[PECropViewController alloc] init];
     cropController.delegate = self;
     cropController.msgDelegate = self;
-    
+
     cropController.image = image;
     // e.g.) Cropping center square
     CGFloat width = image.size.width;
@@ -74,8 +74,6 @@
 -(void) msg2Client:(NSString *)msg {
     [self.commandDelegate evalJs:msg];
 }
-
-@end
 
 #pragma mark - PECropViewControllerDelegate
 

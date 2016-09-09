@@ -434,20 +434,12 @@ static const CGFloat MarginLeft = 20.0f;
     [self layoutCropRectViewWithCropRect:cropRect];
     
     [self automaticZoomIfEdgeTouched:cropRect];
-
-    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.delegate msg2Client:@"redLog('Crop changed');"];
-    }       
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView
 {
     self.resizing = NO;
     [self zoomToCropRect:self.cropRectView.frame];
-
-    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.delegate msg2Client:@"redLog('Crop ended');"];
-    }      
 }
 
 - (void)zoomToCropRect:(CGRect)toRect andCenter:(BOOL)center

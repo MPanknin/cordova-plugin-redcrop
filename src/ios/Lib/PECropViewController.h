@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @protocol PECropViewControllerDelegate;
+@protocol MsgDelegate;
 
 @interface PECropViewController : UIViewController
 
 @property (nonatomic, weak) id<PECropViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<MsgDelegate> msgDelegate;
+
 @property (nonatomic) UIImage *image;
 
 @property (nonatomic) BOOL keepingCropAspectRatio;
@@ -35,11 +38,14 @@
 
 @end
 
-@protocol PECropViewControllerDelegate <NSObject>
+@protocol MsgDelegate <NSObject>
 @optional
 - (void) msg2Client:(NSString *)str;
+@end
+
+@protocol PECropViewControllerDelegate <NSObject>
+@optional
 - (void)cropViewController:(PECropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage;
 - (void)cropViewController:(PECropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage transform:(CGAffineTransform)transform cropRect:(CGRect)cropRect;
 - (void)cropViewControllerDidCancel:(PECropViewController *)controller;
-
 @end

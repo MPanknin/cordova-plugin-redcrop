@@ -35,6 +35,8 @@
 
     PECropViewController *cropController = [[PECropViewController alloc] init];
     cropController.delegate = self;
+    cropController.msgDelegate = self;
+    
     cropController.image = image;
     // e.g.) Cropping center square
     CGFloat width = image.size.width;
@@ -67,11 +69,15 @@
     [self msg2Client:@"redLog('Cropview activev');"];
 }
 
-#pragma mark - PECropViewControllerDelegate
+#pragma mark - MsgDelegate
 
 -(void) msg2Client:(NSString *)msg {
     [self.commandDelegate evalJs:msg];
 }
+
+@end
+
+#pragma mark - PECropViewControllerDelegate
 
 - (void)cropViewController:(PECropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage {
     [controller dismissViewControllerAnimated:YES completion:nil];

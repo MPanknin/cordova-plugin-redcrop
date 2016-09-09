@@ -425,6 +425,11 @@ static const CGFloat MarginLeft = 20.0f;
 - (void)cropRectViewDidBeginEditing:(PECropRectView *)cropRectView
 {
     self.resizing = YES;
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop Start');"];
+    }
+    
 }
 
 - (void)cropRectViewEditingChanged:(PECropRectView *)cropRectView
@@ -440,6 +445,10 @@ static const CGFloat MarginLeft = 20.0f;
 {
     self.resizing = NO;
     [self zoomToCropRect:self.cropRectView.frame];
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop End');"];
+    }
 }
 
 - (void)zoomToCropRect:(CGRect)toRect andCenter:(BOOL)center

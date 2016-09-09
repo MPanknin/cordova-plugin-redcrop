@@ -33,10 +33,10 @@
 @property (nonatomic, weak, readonly) UIRotationGestureRecognizer *rotationGestureRecognizer;
 
 
-
+@protocol PECropViewDelegate <NSObject>
+- (void) msg2Client:(NSString *)str;
 - (void)resetCropRect;
 - (void)resetCropRectAnimated:(BOOL)animated;
-
 - (void)setRotationAngle:(CGFloat)rotationAngle snap:(BOOL)snap;
 
 @end

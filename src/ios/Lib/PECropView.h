@@ -10,7 +10,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
 
+@protocol PECropViewDelegate;
+
 @interface PECropView : UIView
+
+@property (nonatomic, weak) id<PECropViewDelegate> delegate;
 
 @property (nonatomic) UIImage *image;
 @property (nonatomic, readonly) UIImage *croppedImage;

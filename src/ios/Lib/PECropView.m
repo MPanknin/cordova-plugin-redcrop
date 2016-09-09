@@ -84,19 +84,19 @@ static const CGFloat MarginLeft = 20.0f;
     [self addSubview:self.cropRectView];
     
     self.topOverlayView = [[UIView alloc] init];
-    self.topOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
+    self.topOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.topOverlayView];
     
     self.leftOverlayView = [[UIView alloc] init];
-    self.leftOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
+    self.leftOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.leftOverlayView];
     
     self.rightOverlayView = [[UIView alloc] init];
-    self.rightOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
+    self.rightOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.rightOverlayView];
     
     self.bottomOverlayView = [[UIView alloc] init];
-    self.bottomOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
+    self.bottomOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.bottomOverlayView];
 }
 
@@ -430,18 +430,24 @@ static const CGFloat MarginLeft = 20.0f;
 - (void)cropRectViewEditingChanged:(PECropRectView *)cropRectView
 {
     CGRect cropRect = [self cappedCropRectInImageRectWithCropRectView:cropRectView];
-    
-    
 
     [self layoutCropRectViewWithCropRect:cropRect];
     
     [self automaticZoomIfEdgeTouched:cropRect];
+
+    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.delegate msg2Client:@"redLog('Crop changed');"];
+    }       
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView
 {
     self.resizing = NO;
     [self zoomToCropRect:self.cropRectView.frame];
+
+    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.delegate msg2Client:@"redLog('Crop ended');"];
+    }      
 }
 
 - (void)zoomToCropRect:(CGRect)toRect andCenter:(BOOL)center

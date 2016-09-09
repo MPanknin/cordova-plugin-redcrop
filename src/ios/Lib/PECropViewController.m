@@ -75,6 +75,8 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.cropView = [[PECropView alloc] initWithFrame:contentView.bounds];
     [contentView addSubview:self.cropView];
 
+    self.cropView.delegate = self;
+
     if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
         [self.delegate msg2Client:@"redLog('added subview');"];
     }
@@ -308,5 +310,10 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         self.cropView.cropRect = cropRect;
     }
 }
+
+-(void) msg2Client:(NSString *)msg {
+    [self.delegate msg2Client:msg];
+}
+
 
 @end

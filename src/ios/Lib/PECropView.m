@@ -439,6 +439,14 @@ static const CGFloat MarginLeft = 20.0f;
     [self layoutCropRectViewWithCropRect:cropRect];
     
     [self automaticZoomIfEdgeTouched:cropRect];
+
+    CGSize size = cropRect.size;
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msg = [NSString stringWithFormat:@"redLogUpdate('Rect:  %f %f');", size.width , size.height];
+        [self.msgDelegate msg2Client:msg];
+    }
+    
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView

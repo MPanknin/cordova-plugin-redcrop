@@ -60,12 +60,12 @@ static const CGFloat MarginLeft = 20.0f;
 - (void)commonInit
 {
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:1.0f alpha:1.0f];
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     self.scrollView.delegate = self;
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-    self.scrollView.backgroundColor = [UIColor clearColor];
+    self.scrollView.backgroundColor = [UIColor colorWithRed: 1.0f green:1.0f blue:0.0f alpha:1.0f];
     self.scrollView.maximumZoomScale = 20.0f;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
@@ -84,19 +84,19 @@ static const CGFloat MarginLeft = 20.0f;
     [self addSubview:self.cropRectView];
     
     self.topOverlayView = [[UIView alloc] init];
-    self.topOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
+    self.topOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
     [self addSubview:self.topOverlayView];
     
     self.leftOverlayView = [[UIView alloc] init];
-    self.leftOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
+    self.leftOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
     [self addSubview:self.leftOverlayView];
     
     self.rightOverlayView = [[UIView alloc] init];
-    self.rightOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
+    self.rightOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
     [self addSubview:self.rightOverlayView];
     
     self.bottomOverlayView = [[UIView alloc] init];
-    self.bottomOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
+    self.bottomOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
     [self addSubview:self.bottomOverlayView];
 }
 
@@ -191,11 +191,11 @@ static const CGFloat MarginLeft = 20.0f;
     self.scrollView.contentSize = cropRect.size;
     
     self.zoomingView = [[UIView alloc] initWithFrame:self.scrollView.bounds];
-    self.zoomingView.backgroundColor = [UIColor clearColor];
+    self.zoomingView.backgroundColor = [UIColor colorWithRed: 0.0f green:0.0f blue:1.0f alpha:1];
     [self.scrollView addSubview:self.zoomingView];
     
     self.imageView = [[UIImageView alloc] initWithFrame:self.zoomingView.bounds];
-    self.imageView.backgroundColor = [UIColor clearColor];
+    self.imageView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:1];;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.imageView.image = self.image;
     [self.zoomingView addSubview:self.imageView];

@@ -66,7 +66,7 @@ static const CGFloat MarginLeft = 20.0f;
     self.scrollView.delegate = self;
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     self.scrollView.backgroundColor = [UIColor colorWithRed: 1.0f green:1.0f blue:0.0f alpha:1.0f];
-    self.scrollView.maximumZoomScale = 20.0f;
+    self.scrollView.maximumZoomScale = 2.0f;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.bounces = NO;
@@ -457,6 +457,20 @@ static const CGFloat MarginLeft = 20.0f;
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop End');"];
     }
+
+    CGSize size = self.scrollView.contentSize;
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msg = [NSString stringWithFormat:@"redLog('Content size:  %f %f');", size.width , size.height];
+        [self.msgDelegate msg2Client:msg];
+    }    
+
+    CGFloat zoomScale = self.scrollView.zoomScale;
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msgScale = [NSString stringWithFormat:@"redLog('Zoom scale:  %f');", zoomScale];
+        [self.msgDelegate msg2Client:msgScale];
+    }      
 }
 
 - (void)zoomToCropRect:(CGRect)toRect andCenter:(BOOL)center

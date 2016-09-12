@@ -426,9 +426,9 @@ static const CGFloat MarginLeft = 20.0f;
 {
     self.resizing = YES;
 
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop Start');"];
-    }
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop Start');"];
+    // }
     
 }
 
@@ -454,9 +454,9 @@ static const CGFloat MarginLeft = 20.0f;
     self.resizing = NO;
     [self zoomToCropRect:self.cropRectView.frame];
 
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop End');"];
-    }
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop End');"];
+    // }
 
     CGSize size = self.scrollView.contentSize;
 

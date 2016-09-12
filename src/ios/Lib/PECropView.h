@@ -10,7 +10,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
 
+@protocol MsgDelegate;
+
 @interface PECropView : UIView
+
+@property (nonatomic, weak) id<MsgDelegate> msgDelegate;
 
 @property (nonatomic) UIImage *image;
 @property (nonatomic, readonly) UIImage *croppedImage;
@@ -36,3 +40,9 @@
 - (void)setRotationAngle:(CGFloat)rotationAngle snap:(BOOL)snap;
 
 @end
+
+@protocol MsgDelegate <NSObject>
+@optional
+- (void) msg2Client:(NSString *)str;
+@end
+

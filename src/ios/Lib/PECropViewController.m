@@ -75,8 +75,10 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.cropView = [[PECropView alloc] initWithFrame:contentView.bounds];
     [contentView addSubview:self.cropView];
 
-    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.delegate msg2Client:@"redLog('added subview');"];
+    self.cropView.msgDelegate = self.msgDelegate;
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:@"redLog('added subview');"];
     }
 }
 
@@ -86,8 +88,8 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     
     self.title = @"Crop Image";
 
-    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.delegate msg2Client:@"redLog('Cropping active');"];
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:@"redLog('Cropping active');"];
     }
 
     self.navigationController.navigationBar.translucent = NO;
@@ -146,8 +148,8 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     _image = image;
     self.cropView.image = image;
 
-    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.delegate msg2Client:@"redLog('Image set');"];
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:@"redLog('Image set');"];
     }
 }
 
@@ -177,9 +179,9 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     cropViewCropRect.size = size;
     self.cropView.cropRect = cropViewCropRect;
 
-    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         NSString *msg = [NSString stringWithFormat:@"redLog('Crop Rect:  %f %f');", size.width , size.height];
-        [self.delegate msg2Client:msg];
+        [self.msgDelegate msg2Client:msg];
     }
 }
 
@@ -190,9 +192,9 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     
     self.cropView.imageCropRect = imageCropRect;
 
-    if ([self.delegate respondsToSelector:@selector(msg2Client:)]) {
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         NSString *msg = [NSString stringWithFormat:@"redLog('Image crop rect);"];
-        [self.delegate msg2Client:msg];
+        [self.msgDelegate msg2Client:msg];
     }    
 }
 

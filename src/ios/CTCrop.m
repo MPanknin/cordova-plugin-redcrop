@@ -35,11 +35,15 @@
 
     PECropViewController *cropController = [[PECropViewController alloc] init];
     cropController.delegate = self;
+    cropController.msgDelegate = self;
+
     cropController.image = image;
+
     // e.g.) Cropping center square
     CGFloat width = image.size.width;
     CGFloat height = image.size.height;
-    CGFloat length = MIN(width, height);
+
+    // CGFloat length = MIN(width, height);
     cropController.toolbarHidden = YES;
     cropController.rotationEnabled = NO;
 
@@ -48,12 +52,12 @@
     cropController.cropAspectRatio = ratio;
     
     // TODO parameterize this
-    cropController.imageCropRect = CGRectMake((width - length) / 2,
-                                          (height - length) / 2,
-                                          length,
-                                          length * ratio);
+    // cropController.imageCropRect = CGRectMake((width - length) / 2,
+    //                                       (height - length) / 2,
+    //                                       length,
+    //                                       length * ratio);
     
-                                    
+    cropController.imageCropRect = CGRectMake(0, 0, width, width * ratio);                                    
 
     self.callbackId = command.callbackId;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];
@@ -64,14 +68,22 @@
     
     [self.viewController presentViewController:navigationController animated:YES completion:NULL];
 
-    [self msg2Client:@"redLog('Cropview activev');"];
+    [self msg2Client:@"redLog('Cropview active');"];
+
+    NSString *msgInput = [NSString stringWithFormat:@"redLog('Input size:  %f %f');", width , height];
+    [self msg2Client:msgInput];
+
+    NSString *msgRect = [NSString stringWithFormat:@"redLog('Rect size:  %f %f');", width , width * ratio];
+    [self msg2Client:msgRect];    
 }
 
-#pragma mark - PECropViewControllerDelegate
+#pragma mark - MsgDelegate
 
 -(void) msg2Client:(NSString *)msg {
     [self.commandDelegate evalJs:msg];
 }
+
+#pragma mark - PECropViewControllerDelegate
 
 - (void)cropViewController:(PECropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage {
     [controller dismissViewControllerAnimated:YES completion:nil];

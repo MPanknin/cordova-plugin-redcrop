@@ -84,19 +84,19 @@ static const CGFloat MarginLeft = 20.0f;
     [self addSubview:self.cropRectView];
     
     self.topOverlayView = [[UIView alloc] init];
-    self.topOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
+    self.topOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.topOverlayView];
     
     self.leftOverlayView = [[UIView alloc] init];
-    self.leftOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
+    self.leftOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.leftOverlayView];
     
     self.rightOverlayView = [[UIView alloc] init];
-    self.rightOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
+    self.rightOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.rightOverlayView];
     
     self.bottomOverlayView = [[UIView alloc] init];
-    self.bottomOverlayView.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:0.0f alpha:0.4f];
+    self.bottomOverlayView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
     [self addSubview:self.bottomOverlayView];
 }
 
@@ -425,23 +425,38 @@ static const CGFloat MarginLeft = 20.0f;
 - (void)cropRectViewDidBeginEditing:(PECropRectView *)cropRectView
 {
     self.resizing = YES;
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop Start');"];
+    }
+    
 }
 
 - (void)cropRectViewEditingChanged:(PECropRectView *)cropRectView
 {
     CGRect cropRect = [self cappedCropRectInImageRectWithCropRectView:cropRectView];
-    
-    
 
     [self layoutCropRectViewWithCropRect:cropRect];
     
     [self automaticZoomIfEdgeTouched:cropRect];
+
+    CGSize size = cropRect.size;
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msg = [NSString stringWithFormat:@"redLogUpdate('Rect:  %f %f');", size.width , size.height];
+        [self.msgDelegate msg2Client:msg];
+    }
+    
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView
 {
     self.resizing = NO;
     [self zoomToCropRect:self.cropRectView.frame];
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop End');"];
+    }
 }
 
 - (void)zoomToCropRect:(CGRect)toRect andCenter:(BOOL)center

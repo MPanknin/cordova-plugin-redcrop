@@ -70,16 +70,16 @@
 
     // [self msg2Client:@"redLog('Cropview active');"];
 
-    NSString *msgInput = [NSString stringWithFormat:@"redLog('Input size:  %f %f');", width , height];
+    NSString *msgInput = [NSString stringWithFormat:@"cW = %f; cH = %f; ", width , height];
     [self msg2Client:msgInput];
 
-    NSString *msgRect = [NSString stringWithFormat:@"redLog('Rect size:  %f %f');", width , width * ratio];
+    NSString *msgRect = [NSString stringWithFormat:@"rW = %f; rH = %f; ", width , width * ratio];
     [self msg2Client:msgRect];    
 
     CGFloat dx = width / width;
     CGFloat dy = width / (width * ratio);
 
-    NSString *msgDelta = [NSString stringWithFormat:@"redLog('dx dy:  %f %f');", dx , dy];
+    NSString *msgDelta = [NSString stringWithFormat:@"dtWStart = %f; dtHStart = %f; updateStats();", dx , dy];
     [self msg2Client:msgDelta];  
 }
 

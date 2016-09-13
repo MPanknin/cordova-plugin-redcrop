@@ -425,11 +425,6 @@ static const CGFloat MarginLeft = 20.0f;
 - (void)cropRectViewDidBeginEditing:(PECropRectView *)cropRectView
 {
     self.resizing = YES;
-
-    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-    //     [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop Start');"];
-    // }
-    
 }
 
 - (void)cropRectViewEditingChanged:(PECropRectView *)cropRectView
@@ -440,28 +435,27 @@ static const CGFloat MarginLeft = 20.0f;
     
     [self automaticZoomIfEdgeTouched:cropRect];
 
-    // CGSize size = cropRect.size;
-
-    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-    //     NSString *msg = [NSString stringWithFormat:@"redLogUpdate('Crop Rect:  %f %f');", size.width , size.height];
-    //     [self.msgDelegate msg2Client:msg];
-    // }
-
     CGSize size = cropRect.size;
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgCrop = [NSString stringWithFormat:@"curRW = %f; curRH = %f; ", size.width , size.height];
+        NSString *msgCrop = [NSString stringWithFormat:@"curRW = %f; curRH = %f; updateStats();", size.width , size.height];
         [self.msgDelegate msg2Client:msgCrop];
     }    
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msgUpdate = [NSString stringWithFormat:@"redLogUpdate('Crop Rect:  %f %f');", size.width , size.height];
+        [self.msgDelegate msg2Client:msgUpdate];
+    }
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msgFile = [NSString stringWithFormat:@"redLogFilePath('Crop Rect:  %f %f');", size.width , size.height];
+        [self.msgDelegate msg2Client:msgFile];
+    }
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView
 {
     self.resizing = NO;
     [self zoomToCropRect:self.cropRectView.frame];
-
-    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-    //     [self.msgDelegate msg2Client:@"redLog('Hi from the UI... Crop End');"];
-    // }
 
     CGSize size = self.scrollView.contentSize;
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
@@ -474,6 +468,11 @@ static const CGFloat MarginLeft = 20.0f;
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         NSString *msgScale = [NSString stringWithFormat:@"zoom = %f; updateStats();", zoomScale];
         [self.msgDelegate msg2Client:msgScale];
+    }    
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msgDone = @"redLog('Cropping ended);";
+        [self.msgDelegate msg2Client:msgDone];
     }      
 }
 

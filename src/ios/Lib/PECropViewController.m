@@ -78,7 +78,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.cropView.msgDelegate = self.msgDelegate;
 
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('added subview');"];
+        [self.msgDelegate msg2Client:@"redLog('loadView');"];
     }
 }
 
@@ -89,7 +89,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.title = @"Crop Image";
 
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('Cropping active');"];
+        [self.msgDelegate msg2Client:@"redLog('viewDidLoad');"];
     }
 
     self.navigationController.navigationBar.translucent = NO;
@@ -122,6 +122,10 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:@"redLog('viewDidAppear');"];
+    }
 
     if (self.cropAspectRatio != 0) {
         self.cropAspectRatio = self.cropAspectRatio;
@@ -166,7 +170,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.cropView.image = image;
 
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('Image set');"];
+        [self.msgDelegate msg2Client:@"redLog('setImage');"];
     }
 }
 
@@ -197,9 +201,13 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.cropView.cropRect = cropViewCropRect;
 
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msg = [NSString stringWithFormat:@"redLog('Crop Rect:  %f %f');", size.width , size.height];
-        [self.msgDelegate msg2Client:msg];
+        [self.msgDelegate msg2Client:@"redLog('setCropRect');"];
     }
+
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     NSString *msg = [NSString stringWithFormat:@"redLog('Crop Rect:  %f %f');", size.width , size.height];
+    //     [self.msgDelegate msg2Client:msg];
+    // }
 }
 
 - (void)setImageCropRect:(CGRect)imageCropRect
@@ -210,9 +218,8 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.cropView.imageCropRect = imageCropRect;
 
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msg = [NSString stringWithFormat:@"redLog('Image crop rect);"];
-        [self.msgDelegate msg2Client:msg];
-    }    
+        [self.msgDelegate msg2Client:@"redLog('setImageCropRect');"];
+    } 
 }
 
 - (BOOL)isRotationEnabled

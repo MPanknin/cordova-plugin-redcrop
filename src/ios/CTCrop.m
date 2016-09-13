@@ -73,14 +73,18 @@
     NSString *msgInput = [NSString stringWithFormat:@"cW = %f; cH = %f; ", width , height];
     [self msg2Client:msgInput];
 
-    NSString *msgRect = [NSString stringWithFormat:@"rW = %f; rH = %f; ", width , width * ratio];
+    NSString *msgRect = [NSString stringWithFormat:@"rWStart = %f; rHStart = %f; ", width , width * ratio];
     [self msg2Client:msgRect];    
 
     CGFloat dx = width / width;
     CGFloat dy = width / (width * ratio);
 
-    NSString *msgDelta = [NSString stringWithFormat:@"dtWStart = %f; dtHStart = %f; updateStats();", dx , dy];
+    NSString *msgDelta = [NSString stringWithFormat:@"dtWStart = %f; dtHStart = %f;", dx , dy];
     [self msg2Client:msgDelta];  
+
+    CGSize realSize = cropController.imageCropRect.size;
+    NSString *msgRealSize = [NSString stringWithFormat:@"rW = %f; hW = %f; updateStats();", realSize.width , realSize.height];
+    [self msg2Client:msgRealSize];  
 }
 
 #pragma mark - MsgDelegate

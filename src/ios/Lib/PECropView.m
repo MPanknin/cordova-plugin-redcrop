@@ -447,7 +447,7 @@ static const CGFloat MarginLeft = 20.0f;
     //     [self.msgDelegate msg2Client:msg];
     // }
 
-    CGSize size = size.size;
+    CGSize size = cropRect.size;
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         NSString *msgCrop = [NSString stringWithFormat:@"curRW = %f; curRH = %f; ", size.width , size.height];
         [self.msgDelegate msg2Client:msgCrop];

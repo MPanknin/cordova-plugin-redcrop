@@ -52,12 +52,12 @@
     cropController.cropAspectRatio = ratio;
     
     // TODO parameterize this
-    // cropController.imageCropRect = CGRectMake((width - length) / 2,
-    //                                       (height - length) / 2,
-    //                                       length,
-    //                                       length * ratio);
+    cropController.imageCropRect = CGRectMake((width - length) / 2,
+                                          (height - length) / 2,
+                                          length,
+                                          length * ratio);
     
-    cropController.imageCropRect = CGRectMake(0, 0, width, width * ratio);                                    
+    // cropController.imageCropRect = CGRectMake(0, 0, width, width * ratio);                                    
 
     self.callbackId = command.callbackId;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];
@@ -68,13 +68,19 @@
     
     [self.viewController presentViewController:navigationController animated:YES completion:NULL];
 
-    [self msg2Client:@"redLog('Cropview active');"];
+    // [self msg2Client:@"redLog('Cropview active');"];
 
     NSString *msgInput = [NSString stringWithFormat:@"redLog('Input size:  %f %f');", width , height];
     [self msg2Client:msgInput];
 
     NSString *msgRect = [NSString stringWithFormat:@"redLog('Rect size:  %f %f');", width , width * ratio];
     [self msg2Client:msgRect];    
+
+    CGFloat dx = width / width;
+    CGFloat dy = width / (width * ratio);
+
+    NSString *msgDelta = [NSString stringWithFormat:@"redLog('dx dy:  %f %f');", dx , dy];
+    [self msg2Client:msgDelta];  
 }
 
 #pragma mark - MsgDelegate

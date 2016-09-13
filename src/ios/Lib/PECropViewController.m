@@ -134,6 +134,23 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     }
     
     self.keepingCropAspectRatio = self.keepingCropAspectRatio;
+
+    CGSize sizeICR = self.imageCropRect.size;
+    NSString *msgRealSize = [NSString stringWithFormat:@"rW = %f; rH = %f; updateStats();", sizeICR.width , sizeICR.height];
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:msgRealSize];
+    }
+
+    NSString *msgICR = [NSString stringWithFormat:@"redLog('imageCropRect: %f : %f);", sizeICR.width , sizeICR.height];
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:msgICR];
+    } 
+
+    CGSize sizeCR = self.cropRect.size;     
+    NSString *msgCR = [NSString stringWithFormat:@"redLog('cropRect: %f : %f);", sizeCR.width , sizeCR.height];
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:msgCR];
+    }     
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation

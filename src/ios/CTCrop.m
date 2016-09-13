@@ -81,10 +81,6 @@
 
     NSString *msgDelta = [NSString stringWithFormat:@"dtWStart = %f; dtHStart = %f;", dx , dy];
     [self msg2Client:msgDelta];  
-
-    CGSize realSize = cropController.imageCropRect.size;
-    NSString *msgRealSize = [NSString stringWithFormat:@"rW = %f; hW = %f; updateStats();", realSize.width , realSize.height];
-    [self msg2Client:msgRealSize];  
 }
 
 #pragma mark - MsgDelegate

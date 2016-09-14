@@ -108,17 +108,30 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                        target:nil
                                                                                        action:nil];
+        // UILabel* title = [[[UILabel alloc] init] autorelease];
+        // [title setBackgroundColor:[UIColor clearColor]];
+        // [title setFont:[UIFont boldSystemFontOfSize:20]];
+        // [title setTextAlignment:UITextAlignmentCenter];
+        // [title setTextColor:[UIColor grayColor]];
+        // [title.layer setShadowColor:[[UIColor colorWithWhite:1.0 alpha:0.5] CGColor]];
+        // [title.layer setShadowOffset:CGSizeMake(0, 1)];
+        // [title.layer setShadowRadius:0.0];
+        // [title.layer setShadowOpacity:1.0];
+        // [title.layer setMasksToBounds:NO];
+        // [title setText:@"Sample Title"];
+        // [title sizeToFit];
+
         UIBarButtonItem *constrainButton = [[UIBarButtonItem alloc] initWithTitle:PELocalizedString(@"Minimum size: 3200x1800 px", nil)
                                                                                     style:UIBarButtonItemStylePlain     
                                                                                     target:nil
                                                                                     action:nil];
-
         self.footerButton = constrainButton;                                                                           
 
 
         self.toolbarItems = @[flexibleSpace, constrainButton, flexibleSpace];
-        self.toolbar.userInteractionEnabled = NO;
+        
     }
+    self.navigationController.userInteractionEnabled = NO;
     self.navigationController.toolbarHidden = self.toolbarHidden;
     
     self.cropView.image = self.image;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-redcrop" version="0.0.842">
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-redcrop" version="0.0.843">
   <name>CropPlugin with AR support</name>
   <description>
     Crop an image in a Cordova app with support for aspect ratio. This version is still super buggy and I don't recommend downloading it. Based on https://github.com/jeduan/cordova-plugin-crop

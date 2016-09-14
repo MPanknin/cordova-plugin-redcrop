@@ -104,14 +104,17 @@
     [controller dismissViewControllerAnimated:YES completion:nil];
     if (!self.callbackId) return;
     
-    NSData *data = UIImageJPEGRepresentation(croppedImage, (CGFloat) self.quality);
+    NSData *data =  (croppedImage, (CGFloat) self.quality);
     NSString* filePath = [self tempFilePath:@"jpg"];
     CDVPluginResult *result;
     NSError *err;
 
     CGSize finalSize = croppedImage.size;
-    NSString *msgFinal = [NSString stringWithFormat:@"redLog('Final image size: %.f : %.f');", finalSize.width , finalSize.height];
+    NSString *msgFinal = [NSString stringWithFormat:@"redLog('Final size: %.f : %.f');", finalSize.width , finalSize.height];
     [self msg2Client:msgFinal];    
+
+    NSString *msgPath = [NSString stringWithFormat:@"redLog('Path: %@ ');", filePath];
+    [self msg2Client:msgPath];  
 
     // save file
     if (![data writeToFile:filePath options:NSAtomicWrite error:&err]) {

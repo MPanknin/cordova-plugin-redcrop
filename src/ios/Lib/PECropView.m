@@ -10,7 +10,7 @@
 #import "PECropRectView.h"
 #import "UIImage+PECrop.h"
 
-static const CGFloat MarginTop = 37.0f;
+static const CGFloat MarginTop = 20.0f;
 //static const CGFloat MarginBottom = MarginTop;
 static const CGFloat MarginLeft = 20.0f;
 //static const CGFloat MarginRight = MarginLeft;
@@ -60,13 +60,13 @@ static const CGFloat MarginLeft = 20.0f;
 - (void)commonInit
 {
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.backgroundColor = [UIColor colorWithRed: 0.0f green:1.0f blue:1.0f alpha:1.0f];
+    self.backgroundColor = [UIColor clearColor];
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     self.scrollView.delegate = self;
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-    self.scrollView.backgroundColor = [UIColor colorWithRed: 1.0f green:1.0f blue:0.0f alpha:1.0f];
-    self.scrollView.maximumZoomScale = 2.0f;
+    self.scrollView.backgroundColor = [UIColor clearColor];
+    self.scrollView.maximumZoomScale = 4.0f;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.bounces = NO;
@@ -290,7 +290,7 @@ static const CGFloat MarginLeft = 20.0f;
     }
 
     CGSize size = rect.size;
-    NSString *msg = [NSString stringWithFormat:@"redLog(\"CropView: %f : %f\");", size.width , size.height];
+    NSString *msg = [NSString stringWithFormat:@"redLog(\"Crop scaled: %.f : %.f\");", size.width , size.height];
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:msg];
     }     
@@ -324,7 +324,7 @@ static const CGFloat MarginLeft = 20.0f;
     }
 
     CGSize size = self.scrollView.bounds.size;
-    NSString *msg = [NSString stringWithFormat:@"redLog(\"CropView initial: %f : %f\");", size.width , size.height];
+    NSString *msg = [NSString stringWithFormat:@"redLog(\"Crop initial: %.f : %.f\");", size.width , size.height];
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:msg];
     }       
@@ -449,19 +449,19 @@ static const CGFloat MarginLeft = 20.0f;
 
     CGSize size = cropRect.size;
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgCrop = [NSString stringWithFormat:@"curRW = %f; curRH = %f; updateStats();", size.width , size.height];
+        NSString *msgCrop = [NSString stringWithFormat:@"curRW = %.2f; curRH = %.2f; updateStats();", size.width , size.height];
         [self.msgDelegate msg2Client:msgCrop];
     }    
 
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgUpdate = [NSString stringWithFormat:@"redLogUpdate('Crop Rect:  %f %f');", size.width , size.height];
+        NSString *msgUpdate = [NSString stringWithFormat:@"redLogUpdate('Crop Rect:  %.2f %.2f');", size.width , size.height];
         [self.msgDelegate msg2Client:msgUpdate];
     }
 
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgFile = [NSString stringWithFormat:@"redLogFilePath(\"Crop Rect:  %f %f\");", size.width , size.height];
-        [self.msgDelegate msg2Client:msgFile];
-    }
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     NSString *msgFile = [NSString stringWithFormat:@"redLogFilePath(\"Crop Rect:  %.2f %.2f\");", size.width , size.height];
+    //     [self.msgDelegate msg2Client:msgFile];
+    // }
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView
@@ -471,19 +471,19 @@ static const CGFloat MarginLeft = 20.0f;
 
     CGSize size = self.scrollView.contentSize;
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msg = [NSString stringWithFormat:@"curCW = %f; curCH = %f; ", size.width , size.height];
+        NSString *msg = [NSString stringWithFormat:@"curCW = %.2f; curCH = %.2f; ", size.width , size.height];
         [self.msgDelegate msg2Client:msg];
     }    
 
     CGFloat zoomScale = self.scrollView.zoomScale;
 
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgScale = [NSString stringWithFormat:@"zoom = %f; updateStats();", zoomScale];
+        NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
         [self.msgDelegate msg2Client:msgScale];
     }    
 
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgDone = @"redLog('Cropping ended);";
+        NSString *msgDone = @"redLog('Cropping ended');";
         [self.msgDelegate msg2Client:msgDone];
     }      
 }

@@ -140,18 +140,18 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.keepingCropAspectRatio = self.keepingCropAspectRatio;
 
     CGSize sizeICR = self.imageCropRect.size;
-    NSString *msgRealSize = [NSString stringWithFormat:@"rW = %f; rH = %f; updateStats();", sizeICR.width , sizeICR.height];
+    NSString *msgRealSize = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", sizeICR.width , sizeICR.height];
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:msgRealSize];
     }
 
-    NSString *msgICR = [NSString stringWithFormat:@"redLog('imageCropRect: %f : %f);", sizeICR.width , sizeICR.height];
+    NSString *msgICR = [NSString stringWithFormat:@"redLog('imageCropRect: %.2f : %.2f');", sizeICR.width , sizeICR.height];
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:msgICR];
     } 
 
     CGSize sizeCR = self.cropRect.size;     
-    NSString *msgCR = [NSString stringWithFormat:@"redLog('cropRect: %f : %f);", sizeCR.width , sizeCR.height];
+    NSString *msgCR = [NSString stringWithFormat:@"redLog('cropRect: %.2f : %.2f');", sizeCR.width , sizeCR.height];
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:msgCR];
     }     
@@ -217,15 +217,15 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     
     self.cropView.imageCropRect = imageCropRect;
 
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('setImageCropRect');"];
-    } 
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:@"redLog('setImageCropRect');"];
+    // } 
 
-    CGSize size = _imageCropRect.size;
-    NSString *msg = [NSString stringWithFormat:@"redLog(\"ICR: %f : %f\);", size.width , size.height];
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:msg];
-    } 
+    // CGSize size = _imageCropRect.size;
+    // NSString *msg = [NSString stringWithFormat:@"redLog(\"ICR: %f : %f\);", size.width , size.height];
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:msg];
+    // } 
 }
 
 - (BOOL)isRotationEnabled

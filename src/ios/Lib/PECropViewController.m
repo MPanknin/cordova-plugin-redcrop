@@ -118,7 +118,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         [title.layer setShadowRadius:0.0];
         [title.layer setShadowOpacity:1.0];
         [title.layer setMasksToBounds:NO];
-        [title setText:@"Sample Title"];
+        [title setText:@"3200 : 1800"];
         [title sizeToFit];
 
         // UIBarButtonItem *constrainButton = [[UIBarButtonItem alloc] initWithTitle:PELocalizedString(@"Minimum size: 3200x1800 px", nil)
@@ -126,7 +126,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         //                                                                             target:nil
         //                                                                             action:nil];
 
-        UIBarButtonItem *constrainButton = [[[UIBarButtonItem alloc] initWithCustomView:title] autorelease];
+        UIBarButtonItem *constrainButton = [[UIBarButtonItem alloc] initWithCustomView:title];
 
         self.footerButton = constrainButton;                                                                           
 

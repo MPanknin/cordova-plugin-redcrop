@@ -257,6 +257,12 @@ static const CGFloat MarginLeft = 20.0f;
     return width / height;
 }
 
+- (void)setMaximumZoomScale:(CGFloat)maximumZoomScale
+{
+    _maximumZoomScale = maximumZoomScale;
+    self.scrollView.maximumZoomScale = self.maximumZoomScale;
+}
+
 - (void)setCropRect:(CGRect)cropRect
 {
     [self zoomToCropRect:cropRect];

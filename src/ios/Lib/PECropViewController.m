@@ -138,7 +138,8 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     }
     
     self.keepingCropAspectRatio = self.keepingCropAspectRatio;
-
+    self.cropView.maximumZoomScale = self.maximumZoomScale;
+    
     // CGSize sizeICR = self.imageCropRect.size;
     // NSString *msgRealSize = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", sizeICR.width , sizeICR.height];
     // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
@@ -184,6 +185,12 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 {
     _cropAspectRatio = cropAspectRatio;
     self.cropView.cropAspectRatio = self.cropAspectRatio;
+}
+
+- (void)setMaximumZoomScale:(CGFloat)maximumZoomScale
+{
+    _maximumZoomScale = maximumZoomScale;
+    self.cropView.maximumZoomScale = self.maximumZoomScale;
 }
 
 - (void)setCropRect:(CGRect)cropRect

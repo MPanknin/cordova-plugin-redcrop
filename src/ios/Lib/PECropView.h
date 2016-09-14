@@ -25,6 +25,8 @@
 @property (nonatomic) BOOL keepingCropAspectRatio;
 @property (nonatomic) CGFloat cropAspectRatio;
 
+@property (nonatomic) CGFloat maximumZoomScale;
+
 @property (nonatomic) CGRect cropRect;
 @property (nonatomic) CGRect imageCropRect;
 

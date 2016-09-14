@@ -51,6 +51,8 @@
     CGFloat ratio = 9.0f / 16.0f;
     cropController.cropAspectRatio = ratio;
     
+    cropController.maximumZoomScale = width / 3200.0f
+
     // TODO parameterize this
     cropController.imageCropRect = CGRectMake((width - length) / 2,
                                           (height - length) / 2,

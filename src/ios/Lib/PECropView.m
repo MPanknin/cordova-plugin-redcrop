@@ -203,7 +203,7 @@ static const CGFloat MarginLeft = 20.0f;
 
 #pragma mark -
 
-- (void)setFooterLabel:(UILabel *)footerLabel;
+- (void)setFooterLabel:(UILabel *)footerLabel
 {
     _footerLabel = footerLabel;
 }
@@ -480,6 +480,8 @@ static const CGFloat MarginLeft = 20.0f;
         NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
         [self.msgDelegate msg2Client:msgScale];
     }    
+
+    self.footerLabel.text = @"Hi fom the UI..."; 
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView

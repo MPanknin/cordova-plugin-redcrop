@@ -290,7 +290,7 @@ static const CGFloat MarginLeft = 20.0f;
     }
 
     CGSize size = rect.size;
-    NSString *msg = [NSString stringWithFormat:@"redLog(\"CropView: %f : %f\);", size.width , size.height];
+    NSString *msg = [NSString stringWithFormat:@"redLog(\"CropView: %f : %f\");", size.width , size.height];
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:msg];
     }     
@@ -323,8 +323,8 @@ static const CGFloat MarginLeft = 20.0f;
         [UIView commitAnimations];
     }
 
-    CGSize size = rect.size;
-    NSString *msg = [NSString stringWithFormat:@"redLog(\"CropView: %f : %f\);", size.width , size.height];
+    CGSize size = self.scrollView.bounds.size;
+    NSString *msg = [NSString stringWithFormat:@"redLog(\"CropView initial: %f : %f\");", size.width , size.height];
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:msg];
     }       

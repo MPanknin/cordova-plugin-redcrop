@@ -44,7 +44,7 @@
     CGFloat height = image.size.height;
 
     CGFloat length = MIN(width, height);
-    cropController.toolbarHidden = YES;
+    cropController.toolbarHidden = NO;
     cropController.rotationEnabled = NO;
 
     cropController.keepingCropAspectRatio = YES;

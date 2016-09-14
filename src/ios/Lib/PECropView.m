@@ -461,7 +461,7 @@ static const CGFloat MarginLeft = 20.0f;
 
     CGSize size = cropRect.size;
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgCrop = [NSString stringWithFormat:@"curRW = %.2f; curRH = %.2f; updateStats();", size.width , size.height];
+        NSString *msgCrop = [NSString stringWithFormat:@"curRW = %.2f; curRH = %.2f;", size.width , size.height];
         [self.msgDelegate msg2Client:msgCrop];
     }    
 
@@ -470,10 +470,11 @@ static const CGFloat MarginLeft = 20.0f;
         [self.msgDelegate msg2Client:msgUpdate];
     }
 
-    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-    //     NSString *msgFile = [NSString stringWithFormat:@"redLogFilePath(\"Crop Rect:  %.2f %.2f\");", size.width , size.height];
-    //     [self.msgDelegate msg2Client:msgFile];
-    // }
+    CGFloat zoomScale = self.scrollView.zoomScale;
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
+        [self.msgDelegate msg2Client:msgScale];
+    }    
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView
@@ -488,16 +489,10 @@ static const CGFloat MarginLeft = 20.0f;
     }    
 
     CGFloat zoomScale = self.scrollView.zoomScale;
-
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
         [self.msgDelegate msg2Client:msgScale];
     }    
-
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgDone = @"redLog('Cropping ended');";
-        [self.msgDelegate msg2Client:msgDone];
-    }      
 }
 
 - (void)zoomToCropRect:(CGRect)toRect andCenter:(BOOL)center
@@ -538,7 +533,7 @@ static const CGFloat MarginLeft = 20.0f;
 
 - (void)zoomToCropRect:(CGRect)toRect
 {
-    [self zoomToCropRect:toRect andCenter:NO];
+    [self zoomToCropRect:toRect andCenter:YES];
 }
 
 #pragma mark -

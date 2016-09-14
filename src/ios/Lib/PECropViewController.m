@@ -14,7 +14,7 @@
 @property (nonatomic) PECropView *cropView;
 @property (nonatomic) UIActionSheet *actionSheet;
 
-@property (nonatomic) UIBarButtonItem *footerButton;
+@property (nonatomic)  UILabel* *footerLabel;
 
 - (void)commonInit;
 
@@ -128,7 +128,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 
         UIBarButtonItem *constrainButton = [[UIBarButtonItem alloc] initWithCustomView:title];
 
-        self.footerButton = constrainButton;                                                                           
+        self.footerLabel = title;                                                                           
 
         self.toolbarItems = @[flexibleSpace, constrainButton, flexibleSpace];
         
@@ -138,6 +138,8 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     self.cropView.image = self.image;
     
     self.cropView.rotationGestureRecognizer.enabled = _rotationEnabled;
+
+    self.cropView.footerLabel = self.footerLabel;
 }
 
 - (void)viewDidAppear:(BOOL)animated

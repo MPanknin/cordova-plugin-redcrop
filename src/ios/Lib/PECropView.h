@@ -27,6 +27,8 @@
 
 @property (nonatomic) CGFloat maximumZoomScale;
 
+@property (nonatomic) UILabel *footerLabel;
+
 @property (nonatomic) CGRect cropRect;
 @property (nonatomic) CGRect imageCropRect;
 
@@ -40,6 +42,8 @@
 - (void)resetCropRectAnimated:(BOOL)animated;
 
 - (void)setRotationAngle:(CGFloat)rotationAngle snap:(BOOL)snap;
+
+- (void)setFooterLabel:(UILabel *)footerLabel;
 
 @end
 

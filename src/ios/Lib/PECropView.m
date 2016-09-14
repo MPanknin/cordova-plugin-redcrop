@@ -203,6 +203,11 @@ static const CGFloat MarginLeft = 20.0f;
 
 #pragma mark -
 
+- (void)setFooterLabel:(UILabel *)footerLabel;
+{
+    _footerLabel = footerLabel;
+}
+
 - (void)setImage:(UIImage *)image
 {
     _image = image;

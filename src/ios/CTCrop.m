@@ -108,7 +108,11 @@
     NSString* filePath = [self tempFilePath:@"jpg"];
     CDVPluginResult *result;
     NSError *err;
-    
+
+    CGSize finalSize = croppedImage.size;
+    NSString *msgFinal = [NSString stringWithFormat:@"redLog('Final image size: %.f : %.f');", finalSize.width , finalSize.height];
+    [self msg2Client:msgFinal];    
+
     // save file
     if (![data writeToFile:filePath options:NSAtomicWrite error:&err]) {
         result = [CDVPluginResult resultWithStatus:CDVCommandStatus_IO_EXCEPTION messageAsString:[err localizedDescription]];

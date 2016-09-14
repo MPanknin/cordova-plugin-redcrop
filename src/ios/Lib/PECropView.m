@@ -589,9 +589,9 @@ static const CGFloat MarginLeft = 20.0f;
         [self.msgDelegate msg2Client:msgScale];
     }    
 
-    CGSize size = self.scrollView.contentSize;
+    CGSize size = self.image.size;
 
-    NSString *txtLabel = [NSString stringWithFormat:@"w: %.3f h: %.3f s: %.3f", size.width, size.height, zoomScale];
+    NSString *txtLabel = [NSString stringWithFormat:@"w: %.f h: %.f s: %.3f", size.width, size.height, zoomScale];
     self.footerLabel.text = txtLabel; 
 }
 

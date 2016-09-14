@@ -303,7 +303,7 @@ static const CGFloat MarginLeft = 20.0f;
 
     CGSize size = rect.size;
     NSString *msg = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", size.width , size.height];
-   a
+   
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:msg];
     }     

@@ -108,8 +108,8 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                        target:nil
                                                                                        action:nil];
-        UIBarButtonItem *constrainButton = [[UIBarButtonItem alloc] initWithTitle:PELocalizedString(@"Image Size", nil)
-                                                                                    style:UIBarButtonItemStylePlain 
+        UIBarButtonItem *constrainButton = [[UIBarButtonItem alloc] initWithTitle:PELocalizedString(@"Minimum size: 3200x1800 px", nil)
+                                                                                    style:UIBarButtonItemStylePlain     
                                                                                     target:nil
                                                                                     action:nil];
 
@@ -117,6 +117,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 
 
         self.toolbarItems = @[flexibleSpace, constrainButton, flexibleSpace];
+        self.toolbar.userInteractionEnabled = NO;
     }
     self.navigationController.toolbarHidden = self.toolbarHidden;
     

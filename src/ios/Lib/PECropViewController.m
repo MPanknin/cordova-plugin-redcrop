@@ -220,6 +220,12 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:@"redLog('setImageCropRect');"];
     } 
+
+    CGSize size = _imageCropRect.size;
+    NSString *msg = [NSString stringWithFormat:@"redLog(\"ICR: %f : %f\);", size.width , size.height];
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:msg];
+    } 
 }
 
 - (BOOL)isRotationEnabled

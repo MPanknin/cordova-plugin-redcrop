@@ -57,6 +57,8 @@
                                           length,
                                           length * ratio);
     
+    
+
     // cropController.imageCropRect = CGRectMake(0, 0, width, width * ratio);                                    
 
     self.callbackId = command.callbackId;

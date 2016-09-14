@@ -288,6 +288,12 @@ static const CGFloat MarginLeft = 20.0f;
     if (!CGRectIsNull(intersection)) {
         self.cropRect = intersection;
     }
+
+    CGSize size = rect.size;
+    NSString *msg = [NSString stringWithFormat:@"redLog(\"CropView: %f : %f\);", size.width , size.height];
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:msg];
+    }     
 }
 
 - (void)resetCropRect
@@ -316,6 +322,12 @@ static const CGFloat MarginLeft = 20.0f;
     if (animated) {
         [UIView commitAnimations];
     }
+
+    CGSize size = rect.size;
+    NSString *msg = [NSString stringWithFormat:@"redLog(\"CropView: %f : %f\);", size.width , size.height];
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        [self.msgDelegate msg2Client:msg];
+    }       
 }
 
 - (UIImage *)croppedImage
@@ -447,7 +459,7 @@ static const CGFloat MarginLeft = 20.0f;
     }
 
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgFile = [NSString stringWithFormat:@"redLogFilePath('Crop Rect:  %f %f');", size.width , size.height];
+        NSString *msgFile = [NSString stringWithFormat:@"redLogFilePath(\"Crop Rect:  %f %f\");", size.width , size.height];
         [self.msgDelegate msg2Client:msgFile];
     }
 }

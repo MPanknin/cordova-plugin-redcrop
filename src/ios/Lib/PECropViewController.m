@@ -110,7 +110,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
                                                                                        action:nil];
         UILabel* title = [[UILabel alloc] init];
         [title setBackgroundColor:[UIColor clearColor]];
-        [title setFont:[UIFont boldSystemFontOfSize:20]];
+        [title setFont:[UIFont boldSystemFontOfSize:15]];
         [title setTextAlignment:UITextAlignmentCenter];
         [title setTextColor:[UIColor grayColor]];
         [title.layer setShadowColor:[[UIColor colorWithWhite:1.0 alpha:0.5] CGColor]];
@@ -118,7 +118,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         [title.layer setShadowRadius:0.0];
         [title.layer setShadowOpacity:1.0];
         [title.layer setMasksToBounds:NO];
-        [title setText:@"3200 x 1900 3200 x 1900"];
+        [title setText:@"  3200 x 1900  "];
         [title sizeToFit];
 
         // UIBarButtonItem *constrainButton = [[UIBarButtonItem alloc] initWithTitle:PELocalizedString(@"Minimum size: 3200x1800 px", nil)

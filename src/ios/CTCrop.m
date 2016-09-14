@@ -54,14 +54,14 @@
     cropController.maximumZoomScale = width / 3200.0f;
 
     // TODO parameterize this
-    cropController.imageCropRect = CGRectMake((width - length) / 2,
+    //cropController.imageCropRect = CGRectMake((width - length) / 2,
                                           (height - length) / 2,
                                           length,
                                           length * ratio);
     
     
 
-    // cropController.imageCropRect = CGRectMake(0, 0, width, width * ratio);                                    
+    cropController.imageCropRect = CGRectMake(0, 0, 3200, 1800);                                    
 
     self.callbackId = command.callbackId;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];

@@ -482,7 +482,7 @@ static const CGFloat MarginLeft = 20.0f;
         [self.msgDelegate msg2Client:msgScale];
     }    
 
-    NSString *txtLabel = [NSString stringWithFormat:@"%.2f; %.2f;", size.width , size.height];
+    NSString *txtLabel = [NSString stringWithFormat:@"%.f : %.f", size.width , size.height];
     self.footerLabel.text = txtLabel; 
 }
 

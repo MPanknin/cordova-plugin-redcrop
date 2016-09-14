@@ -14,6 +14,8 @@
 @property (nonatomic) PECropView *cropView;
 @property (nonatomic) UIActionSheet *actionSheet;
 
+@property (nonatomic) UIBarButtonItem *footerButton;
+
 - (void)commonInit;
 
 @end
@@ -106,10 +108,14 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                        target:nil
                                                                                        action:nil];
-        UIBarButtonItem *constrainButton = [[UIBarButtonItem alloc] initWithTitle:PELocalizedString(@"Constrain", nil)
-                                                                            style:UIBarButtonItemStyleBordered
-                                                                           target:self
-                                                                           action:@selector(constrain:)];
+        UIBarButtonItem *constrainButton = [[UIBarButtonItem alloc] initWithTitle:PELocalizedString(@"Image Size", nil)
+                                                                                    style:UIBarButtonItemStylePlain 
+                                                                                    target:nil
+                                                                                    action:nil];
+
+        self.footerButton = constrainButton;                                                                           
+
+
         self.toolbarItems = @[flexibleSpace, constrainButton, flexibleSpace];
     }
     self.navigationController.toolbarHidden = self.toolbarHidden;
@@ -139,7 +145,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     
     self.keepingCropAspectRatio = self.keepingCropAspectRatio;
     self.cropView.maximumZoomScale = self.maximumZoomScale;
-    
+
     // CGSize sizeICR = self.imageCropRect.size;
     // NSString *msgRealSize = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", sizeICR.width , sizeICR.height];
     // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {

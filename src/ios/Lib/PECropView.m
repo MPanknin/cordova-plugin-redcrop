@@ -266,6 +266,7 @@ static const CGFloat MarginLeft = 20.0f;
 {
     _maximumZoomScale = maximumZoomScale;
     self.scrollView.maximumZoomScale = self.maximumZoomScale;
+    self.scrollView.zoomScale = self.maximumZoomScale;
 }
 
 - (void)setCropRect:(CGRect)cropRect

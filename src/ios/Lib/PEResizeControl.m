@@ -19,7 +19,7 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, 44.0f, 44.0f)];
+    self = [super initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, 1.0f, 1.0f)];
     if (self) {
         self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
         self.exclusiveTouch = YES;

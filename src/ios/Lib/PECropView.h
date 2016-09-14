@@ -40,7 +40,6 @@
 
 - (void)resetCropRect;
 - (void)resetCropRectAnimated:(BOOL)animated;
-
 - (void)setRotationAngle:(CGFloat)rotationAngle snap:(BOOL)snap;
 
 - (void)setFooterLabel:(UILabel *)footerLabel;

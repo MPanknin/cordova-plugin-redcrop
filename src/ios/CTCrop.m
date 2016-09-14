@@ -58,8 +58,9 @@
                                         //   (height - length) / 2,
                                         //   length,
                                         //   length * ratio);
-    
-    cropController.imageCropRect = CGRectMake(0, 0, 3200, 1800);                                    
+
+
+    cropController.imageCropRect = CGRectMake((width - 3200) / 2, (height - 1800) / 2, 3200, 1800);                                    
 
     self.callbackId = command.callbackId;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:cropController];
@@ -75,11 +76,17 @@
     NSString *msgInput = [NSString stringWithFormat:@"cW = %f; cH = %f; ", width , height];
     [self msg2Client:msgInput];
 
-    NSString *msgRect = [NSString stringWithFormat:@"rWStart = %f; rHStart = %f; ", width , width * ratio];
+
+    CGSize initSize = cropController.imageCropRect.size;
+    NSString *msgRect = [NSString stringWithFormat:@"rWStart = %f; rHStart = %f; ", initSize.width , initSize.height];
     [self msg2Client:msgRect];    
 
-    CGFloat dx = width / width;
-    CGFloat dy = width / (width * ratio);
+    CGFloat pos = cropController.imageCropRect.origin;
+    NSString *msgPos = [NSString stringWithFormat:@"redLog('Rect Pos: %.2f : %.2f');", pos.x , pos.y];
+    [self msg2Client:msgPos];    
+
+    CGFloat dx = width / initSize.width;
+    CGFloat dy = height / initSize.height;
 
     NSString *msgDelta = [NSString stringWithFormat:@"dtWStart = %f; dtHStart = %f;", dx , dy];
     [self msg2Client:msgDelta];  

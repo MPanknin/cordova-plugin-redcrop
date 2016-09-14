@@ -81,7 +81,7 @@
     NSString *msgRect = [NSString stringWithFormat:@"rWStart = %f; rHStart = %f; ", initSize.width , initSize.height];
     [self msg2Client:msgRect];    
 
-    CGFloat pos = cropController.imageCropRect.origin;
+    CGPoint pos = cropController.imageCropRect.origin;
     NSString *msgPos = [NSString stringWithFormat:@"redLog('Rect Pos: %.2f : %.2f');", pos.x , pos.y];
     [self msg2Client:msgPos];    
 

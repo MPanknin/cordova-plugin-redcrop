@@ -475,13 +475,15 @@ static const CGFloat MarginLeft = 20.0f;
         [self.msgDelegate msg2Client:msgUpdate];
     }
 
+    // zoom gets updated only on editing ended 
     CGFloat zoomScale = self.scrollView.zoomScale;
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
         [self.msgDelegate msg2Client:msgScale];
     }    
 
-    self.footerLabel.text = @"Hi fom the UI..."; 
+    NSString *txtLabel = [NSString stringWithFormat:@"%.2f; %.2f;", size.width , size.height];
+    self.footerLabel.text = txtLabel; 
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView

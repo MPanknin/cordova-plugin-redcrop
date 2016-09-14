@@ -533,7 +533,7 @@ static const CGFloat MarginLeft = 20.0f;
 
 - (void)zoomToCropRect:(CGRect)toRect
 {
-    [self zoomToCropRect:toRect andCenter:YES];
+    [self zoomToCropRect:toRect andCenter:NO];
 }
 
 #pragma mark -

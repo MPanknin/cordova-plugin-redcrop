@@ -108,7 +108,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                        target:nil
                                                                                        action:nil];
-        UILabel* title = [[[UILabel alloc] init] autorelease];
+        UILabel* title = [[UILabel alloc] init];
         [title setBackgroundColor:[UIColor clearColor]];
         [title setFont:[UIFont boldSystemFontOfSize:20]];
         [title setTextAlignment:UITextAlignmentCenter];

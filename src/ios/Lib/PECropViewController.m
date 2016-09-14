@@ -118,7 +118,7 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
         [title.layer setShadowRadius:0.0];
         [title.layer setShadowOpacity:1.0];
         [title.layer setMasksToBounds:NO];
-        [title setText:@"  3200 x 1900  "];
+        [title setText:@"    w: xxxx.xxx h: xxxx.xxx s: xxxx.xxx   "];
         [title sizeToFit];
 
         // UIBarButtonItem *constrainButton = [[UIBarButtonItem alloc] initWithTitle:PELocalizedString(@"Minimum size: 3200x1800 px", nil)

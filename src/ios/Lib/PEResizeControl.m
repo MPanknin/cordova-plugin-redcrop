@@ -28,6 +28,7 @@
         [self addGestureRecognizer:gestureRecognizer];
     }
     
+    self.hidden = YES;
     return self;
 }
 

@@ -303,7 +303,7 @@ static const CGFloat MarginLeft = 20.0f;
 
     CGSize size = rect.size;
     NSString *msg = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", size.width , size.height];
-   
+   a
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:msg];
     }     
@@ -589,7 +589,9 @@ static const CGFloat MarginLeft = 20.0f;
         [self.msgDelegate msg2Client:msgScale];
     }    
 
-    NSString *txtLabel = [NSString stringWithFormat:@"Scale %.f", zoomScale];
+    CGSize size = self.scrollView.contentSize;
+
+    NSString *txtLabel = [NSString stringWithFormat:@"w: %.3f h: %.3f s: %.3f", size.width, size.height, zoomScale];
     self.footerLabel.text = txtLabel; 
 }
 

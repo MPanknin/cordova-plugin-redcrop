@@ -14,7 +14,7 @@
 @property (nonatomic) PECropView *cropView;
 @property (nonatomic) UIActionSheet *actionSheet;
 
-@property (nonatomic)  UILabel* *footerLabel;
+@property (nonatomic)  UILabel *footerLabel;
 
 - (void)commonInit;
 

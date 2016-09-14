@@ -581,4 +581,16 @@ static const CGFloat MarginLeft = 20.0f;
     *targetContentOffset = contentOffset;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat zoomScale = self.scrollView.zoomScale;
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
+        [self.msgDelegate msg2Client:msgScale];
+    }    
+
+    NSString *txtLabel = [NSString stringWithFormat:@"Scale %.f", zoomScale];
+    self.footerLabel.text = txtLabel; 
+}
+
 @end

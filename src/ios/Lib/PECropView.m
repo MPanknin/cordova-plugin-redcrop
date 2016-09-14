@@ -290,10 +290,16 @@ static const CGFloat MarginLeft = 20.0f;
     }
 
     CGSize size = rect.size;
-    NSString *msg = [NSString stringWithFormat:@"redLog(\"Crop scaled: %.f : %.f\");", size.width , size.height];
+    NSString *msg = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", size.width , size.height];
+   
     if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
         [self.msgDelegate msg2Client:msg];
     }     
+    // CGSize sizeICR = self.imageCropRect.size;
+    // NSString *msgRealSize = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", sizeICR.width , sizeICR.height];
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:msgRealSize];
+    // }
 }
 
 - (void)resetCropRect

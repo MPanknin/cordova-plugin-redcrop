@@ -139,22 +139,22 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     
     self.keepingCropAspectRatio = self.keepingCropAspectRatio;
 
-    CGSize sizeICR = self.imageCropRect.size;
-    NSString *msgRealSize = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", sizeICR.width , sizeICR.height];
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:msgRealSize];
-    }
+    // CGSize sizeICR = self.imageCropRect.size;
+    // NSString *msgRealSize = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", sizeICR.width , sizeICR.height];
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:msgRealSize];
+    // }
 
-    NSString *msgICR = [NSString stringWithFormat:@"redLog('imageCropRect: %.2f : %.2f');", sizeICR.width , sizeICR.height];
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:msgICR];
-    } 
+    // NSString *msgICR = [NSString stringWithFormat:@"redLog('imageCropRect: %.2f : %.2f');", sizeICR.width , sizeICR.height];
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:msgICR];
+    // } 
 
-    CGSize sizeCR = self.cropRect.size;     
-    NSString *msgCR = [NSString stringWithFormat:@"redLog('cropRect: %.2f : %.2f');", sizeCR.width , sizeCR.height];
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:msgCR];
-    }     
+    // CGSize sizeCR = self.cropRect.size;     
+    // NSString *msgCR = [NSString stringWithFormat:@"redLog('cropRect: %.2f : %.2f');", sizeCR.width , sizeCR.height];
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:msgCR];
+    // }     
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -169,9 +169,9 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     _image = image;
     self.cropView.image = image;
 
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('setImage');"];
-    }
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:@"redLog('setImage');"];
+    // }
 }
 
 - (void)setKeepingCropAspectRatio:(BOOL)keepingCropAspectRatio
@@ -200,9 +200,9 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     cropViewCropRect.size = size;
     self.cropView.cropRect = cropViewCropRect;
 
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('setCropRect');"];
-    }
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:@"redLog('setCropRect');"];
+    // }
 
     // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
     //     NSString *msg = [NSString stringWithFormat:@"redLog('Crop Rect:  %f %f');", size.width , size.height];

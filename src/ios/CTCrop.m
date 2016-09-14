@@ -55,12 +55,10 @@
 
     // TODO parameterize this
     //cropController.imageCropRect = CGRectMake((width - length) / 2,
-                                          (height - length) / 2,
-                                          length,
-                                          length * ratio);
+                                        //   (height - length) / 2,
+                                        //   length,
+                                        //   length * ratio);
     
-    
-
     cropController.imageCropRect = CGRectMake(0, 0, 3200, 1800);                                    
 
     self.callbackId = command.callbackId;

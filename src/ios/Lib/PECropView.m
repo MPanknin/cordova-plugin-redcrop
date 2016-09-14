@@ -329,11 +329,11 @@ static const CGFloat MarginLeft = 20.0f;
         [UIView commitAnimations];
     }
 
-    CGSize size = self.scrollView.bounds.size;
-    NSString *msg = [NSString stringWithFormat:@"redLog(\"Crop initial: %.f : %.f\");", size.width , size.height];
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:msg];
-    }       
+    // CGSize size = self.scrollView.bounds.size;
+    // NSString *msg = [NSString stringWithFormat:@"redLog(\"Crop initial: %.f : %.f\");", size.width , size.height];
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:msg];
+    // }       
 }
 
 - (UIImage *)croppedImage

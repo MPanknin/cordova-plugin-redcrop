@@ -88,9 +88,9 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     
     self.title = @"Crop Image";
 
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('viewDidLoad');"];
-    }
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:@"redLog('viewDidLoad');"];
+    // }
 
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.toolbar.translucent = NO;
@@ -123,9 +123,9 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 {
     [super viewDidAppear:animated];
 
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('viewDidAppear');"];
-    }
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:@"redLog('viewDidAppear');"];
+    // }
 
     if (self.cropAspectRatio != 0) {
         self.cropAspectRatio = self.cropAspectRatio;

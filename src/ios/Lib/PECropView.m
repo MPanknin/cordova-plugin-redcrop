@@ -591,7 +591,7 @@ static const CGFloat MarginLeft = 20.0f;
 
     CGSize size = self.image.size;
 
-    NSString *txtLabel = [NSString stringWithFormat:@"w: %.f h: %.f", size.width / zoomScale, size.height / zoomScale, zoomScale];
+    NSString *txtLabel = [NSString stringWithFormat:@"w: %.f h: %.f", size.width / zoomScale, (size.height / zoomScale) * 0.5625];
     self.footerLabel.text = txtLabel; 
 }
 

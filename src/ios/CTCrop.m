@@ -113,8 +113,8 @@
     NSString *msgFinal = [NSString stringWithFormat:@"redLog('Final size: %.f : %.f');", finalSize.width , finalSize.height];
     [self msg2Client:msgFinal];    
 
-    NSString *msgPath = [NSString stringWithFormat:@"redLog('Path: %@ ');", filePath];
-    [self msg2Client:msgPath];  
+    // NSString *msgPath = [NSString stringWithFormat:@"redLog('Path: %@ ');", filePath];
+    // [self msg2Client:msgPath];  
 
     // save file
     if (![data writeToFile:filePath options:NSAtomicWrite error:&err]) {

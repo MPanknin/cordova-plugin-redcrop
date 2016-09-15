@@ -10,9 +10,9 @@
 #import "PECropRectView.h"
 #import "UIImage+PECrop.h"
 
-static const CGFloat MarginTop = 0.0f;
+static const CGFloat MarginTop = 10.0f;
 //static const CGFloat MarginBottom = MarginTop;
-static const CGFloat MarginLeft = 0.0f;
+static const CGFloat MarginLeft = 10.0f;
 //static const CGFloat MarginRight = MarginLeft;
 
 @interface PECropView () <UIScrollViewDelegate, UIGestureRecognizerDelegate, PECropRectViewDelegate>
@@ -350,7 +350,16 @@ static const CGFloat MarginLeft = 0.0f;
 
 - (UIImage *)croppedImage
 {
+    CGSize size = self.image.size;
+    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+        NSString *msg = [NSString stringWithFormat:@"redLog('Size before rotation: %.3f : %.3f')", size.width , size.height];
+        [self.msgDelegate msg2Client:msg];
+    }    
+
     return [self.image rotatedImageWithtransform:self.rotation croppedToRect:self.zoomedCropRect];
+
+
+
 }
 
 - (CGRect)zoomedCropRect

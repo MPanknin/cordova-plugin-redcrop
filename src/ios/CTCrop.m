@@ -82,22 +82,22 @@
     // [self msg2Client:@"redLog('Cropview active');"];
 
     NSString *msgInput = [NSString stringWithFormat:@"cW = %f; cH = %f; ", width , height];
-    [self msg2Client:msgInput];
+    // [self msg2Client:msgInput];
 
 
     CGSize initSize = cropController.imageCropRect.size;
     NSString *msgRect = [NSString stringWithFormat:@"rWStart = %f; rHStart = %f; ", initSize.width , initSize.height];
-    [self msg2Client:msgRect];    
+    // [self msg2Client:msgRect];    
 
     CGPoint pos = cropController.imageCropRect.origin;
     NSString *msgPos = [NSString stringWithFormat:@"redLog('Rect Pos: %.2f : %.2f');", pos.x , pos.y];
-    [self msg2Client:msgPos];    
+    // [self msg2Client:msgPos];    
 
     CGFloat dx = width / initSize.width;
     CGFloat dy = height / initSize.height;
 
     NSString *msgDelta = [NSString stringWithFormat:@"dtWStart = %f; dtHStart = %f;", dx , dy];
-    [self msg2Client:msgDelta];  
+    // [self msg2Client:msgDelta];  
 }
 
 #pragma mark - MsgDelegate
@@ -119,7 +119,7 @@
 
     CGSize finalSize = croppedImage.size;
     NSString *msgFinal = [NSString stringWithFormat:@"redLog('Final size: %.f : %.f');", finalSize.width , finalSize.height];
-    [self msg2Client:msgFinal];    
+    // [self msg2Client:msgFinal];    
 
     // NSString *msgPath = [NSString stringWithFormat:@"redLog('Path: %@ ');", filePath];
     // [self msg2Client:msgPath];  

@@ -79,9 +79,9 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
 
     self.cropView.msgDelegate = self.msgDelegate;
 
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:@"redLog('loadView');"];
-    }
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:@"redLog('loadView');"];
+    // }
 }
 
 - (void)viewDidLoad

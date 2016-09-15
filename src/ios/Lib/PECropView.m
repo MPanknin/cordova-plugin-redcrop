@@ -301,12 +301,12 @@ static const CGFloat MarginLeft = 10.0f;
         self.cropRect = intersection;
     }
 
-    CGSize size = rect.size;
-    NSString *msg = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", size.width , size.height];
+    // CGSize size = rect.size;
+    // NSString *msg = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", size.width , size.height];
    
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        [self.msgDelegate msg2Client:msg];
-    }     
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     [self.msgDelegate msg2Client:msg];
+    // }     
     // CGSize sizeICR = self.imageCropRect.size;
     // NSString *msgRealSize = [NSString stringWithFormat:@"rW = %.2f; rH = %.2f; updateStats();", sizeICR.width , sizeICR.height];
     // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
@@ -350,11 +350,11 @@ static const CGFloat MarginLeft = 10.0f;
 
 - (UIImage *)croppedImage
 {
-    CGSize size = self.image.size;
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msg = [NSString stringWithFormat:@"redLog('Size before rotation: %.3f : %.3f')", size.width , size.height];
-        [self.msgDelegate msg2Client:msg];
-    }    
+    // CGSize size = self.image.size;
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     NSString *msg = [NSString stringWithFormat:@"redLog('Size before rotation: %.3f : %.3f')", size.width , size.height];
+    //     [self.msgDelegate msg2Client:msg];
+    // }    
 
     return [self.image rotatedImageWithtransform:self.rotation croppedToRect:self.zoomedCropRect];
 
@@ -474,26 +474,26 @@ static const CGFloat MarginLeft = 10.0f;
     
     [self automaticZoomIfEdgeTouched:cropRect];
 
-    CGSize size = cropRect.size;
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgCrop = [NSString stringWithFormat:@"curRW = %.2f; curRH = %.2f;", size.width , size.height];
-        [self.msgDelegate msg2Client:msgCrop];
-    }    
+    // CGSize size = cropRect.size;
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     NSString *msgCrop = [NSString stringWithFormat:@"curRW = %.2f; curRH = %.2f;", size.width , size.height];
+    //     [self.msgDelegate msg2Client:msgCrop];
+    // }    
 
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgUpdate = [NSString stringWithFormat:@"redLogUpdate('Crop Rect:  %.2f %.2f');", size.width , size.height];
-        [self.msgDelegate msg2Client:msgUpdate];
-    }
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     NSString *msgUpdate = [NSString stringWithFormat:@"redLogUpdate('Crop Rect:  %.2f %.2f');", size.width , size.height];
+    //     [self.msgDelegate msg2Client:msgUpdate];
+    // }
 
     // zoom gets updated only on editing ended 
-    CGFloat zoomScale = self.scrollView.zoomScale;
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
-        [self.msgDelegate msg2Client:msgScale];
-    }    
+    // CGFloat zoomScale = self.scrollView.zoomScale;
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
+    //     [self.msgDelegate msg2Client:msgScale];
+    // }    
 
-    NSString *txtLabel = [NSString stringWithFormat:@"%.f : %.f", size.width , size.height];
-    self.footerLabel.text = txtLabel; 
+    // NSString *txtLabel = [NSString stringWithFormat:@"%.f : %.f", size.width , size.height];
+    // self.footerLabel.text = txtLabel; 
 }
 
 - (void)cropRectViewDidEndEditing:(PECropRectView *)cropRectView
@@ -501,17 +501,17 @@ static const CGFloat MarginLeft = 10.0f;
     self.resizing = NO;
     [self zoomToCropRect:self.cropRectView.frame];
 
-    CGSize size = self.scrollView.contentSize;
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msg = [NSString stringWithFormat:@"curCW = %.2f; curCH = %.2f; ", size.width , size.height];
-        [self.msgDelegate msg2Client:msg];
-    }    
+    // CGSize size = self.scrollView.contentSize;
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     NSString *msg = [NSString stringWithFormat:@"curCW = %.2f; curCH = %.2f; ", size.width , size.height];
+    //     [self.msgDelegate msg2Client:msg];
+    // }    
 
-    CGFloat zoomScale = self.scrollView.zoomScale;
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
-        [self.msgDelegate msg2Client:msgScale];
-    }    
+    // CGFloat zoomScale = self.scrollView.zoomScale;
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
+    //     [self.msgDelegate msg2Client:msgScale];
+    // }    
 }
 
 - (void)zoomToCropRect:(CGRect)toRect andCenter:(BOOL)center
@@ -588,15 +588,26 @@ static const CGFloat MarginLeft = 10.0f;
 {
     CGPoint contentOffset = scrollView.contentOffset;
     *targetContentOffset = contentOffset;
+
+    CGFloat zoomScale = self.scrollView.zoomScale;
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
+    //     [self.msgDelegate msg2Client:msgScale];
+    // }    
+
+    CGSize size = self.image.size;
+
+    NSString *txtLabel = [NSString stringWithFormat:@"w: %.f h: %.f", size.width / zoomScale, (size.height / zoomScale) * 0.5625];
+    self.footerLabel.text = txtLabel; 
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat zoomScale = self.scrollView.zoomScale;
-    if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
-        NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
-        [self.msgDelegate msg2Client:msgScale];
-    }    
+    // if ([self.msgDelegate respondsToSelector:@selector(msg2Client:)]) {
+    //     NSString *msgScale = [NSString stringWithFormat:@"zoom = %.2f; updateStats();", zoomScale];
+    //     [self.msgDelegate msg2Client:msgScale];
+    // }    
 
     CGSize size = self.image.size;
 

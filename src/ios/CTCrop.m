@@ -104,7 +104,7 @@
     [controller dismissViewControllerAnimated:YES completion:nil];
     if (!self.callbackId) return;
     
-    NSData *data =  (croppedImage, (CGFloat) self.quality);
+    NSData *data =  UIImageJPEGRepresentation(croppedImage, (CGFloat) self.quality);
     NSString* filePath = [self tempFilePath:@"jpg"];
     CDVPluginResult *result;
     NSError *err;

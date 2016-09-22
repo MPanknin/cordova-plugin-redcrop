@@ -69,8 +69,8 @@ static const CGFloat MarginLeft = 10.0f;
     self.scrollView.maximumZoomScale = 1.0001f;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
-    self.scrollView.bounces = NO;
-    self.scrollView.bouncesZoom = NO;
+    self.scrollView.bounces = YES;
+    self.scrollView.bouncesZoom = YES;
     self.scrollView.clipsToBounds = NO;
     [self addSubview:self.scrollView];
     

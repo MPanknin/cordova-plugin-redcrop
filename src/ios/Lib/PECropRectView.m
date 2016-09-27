@@ -35,7 +35,7 @@
         self.contentMode = UIViewContentModeRedraw;
         
         self.showsGridMajor = YES;
-        self.showsGridMinor = NO;
+        self.showsGridMinor = YES;
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds, -2.0f, -2.0f)];
         imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
